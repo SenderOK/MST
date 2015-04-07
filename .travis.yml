@@ -1,0 +1,8 @@
+language: csharp
+solution: MST.sln
+install:
+  - nuget restore MST.sln
+  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+script:
+  - xbuild /p:Configuration=Release MST.sln
+  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./MST.Tests/bin/Release/MST.Tests.dll
